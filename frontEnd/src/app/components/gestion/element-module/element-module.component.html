@@ -1,0 +1,117 @@
+<app-page-header
+  [link]="'departements'"
+  [prev]="'Départements'"
+  [current]="'Home'"
+></app-page-header>
+<div class="student-group-form">
+  <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchDepartments()">
+    <!-- Search form -->
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Recherche par libellé ..."
+            formControlName="keyword"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-2">
+        <div class="search-student-btn">
+          <button type="button" class="btn btn-primary">Chercher</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card card-table">
+      <div class="card-body">
+        <div class="page-header">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="page-title">Départements</h3>
+            </div>
+            <div class="col-auto text-end float-end ms-auto download-grp">
+              <a routerLink="/departements/add" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table
+            class="table border-0 star-student table-hover table-center mb-0 datatable table-striped"
+          >
+            <thead class="student-thread">
+              <tr>
+                <th>
+                  <div class="form-check check-tables">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="something"
+                    />
+                  </div>
+                </th>
+                <th>ID</th>
+                <th>libellé</th>
+                <th>Module</th>
+                <th>Volume horaire</th>
+                <th>Prof Cours</th>
+                <th>vh Cours</th>
+                <th>Prof TD</th>
+                <th>vh TD</th>
+                <th>Prof TP</th>
+                <th>vh TP</th>
+                <th scope="col" class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let element of elements">
+                <td>
+                  <div class="form-check check-tables">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="something"
+                    />
+                  </div>
+                </td>
+                <td>{{ element.id_element }}</td>
+                <td>{{ element.libelle }}</td>
+                <td>{{ element.module.responsable.nom+" "+element.module.responsable.prenom}}</td>
+                <td>{{ element.profCours.nom+" "+element.profCours.prenom}}</td>
+                <td>{{ element.vhCours }}</td>
+                <td>{{ element.profTD.nom+" "+element.profTD.prenom}}</td>
+                <td>{{ element.vhTD }}</td>
+                <td>{{ element.profTP.nom+" "+element.profTP.prenom}}</td>
+                <td>{{ element.vhTP }}</td>
+                <td class="text-center">
+                  <a
+                    class="btn btn-sm bg-success-light me-2"
+                    (click)="handleEditeDepart(element)"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    (click)="handleDeleteDepartment(element)"
+                    class="btn btn-sm bg-danger-light"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
