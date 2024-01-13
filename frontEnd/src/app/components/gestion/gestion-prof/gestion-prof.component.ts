@@ -82,7 +82,7 @@ export class GestionProfComponent implements OnInit {
     confirmButtonText: 'Oui, supprimez-le!'
   }).then((result) => {
     if (result.isConfirmed) {
-      this.profService.deleteProf(prof.id).subscribe();;
+      this.profService.deleteProf(prof.ID_Prof).subscribe();;
       this.profs.splice( this.profs.indexOf(prof),1);
 
     }

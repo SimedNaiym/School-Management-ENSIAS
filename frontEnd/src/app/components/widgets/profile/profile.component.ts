@@ -45,13 +45,13 @@ handleEditeProf(profedit: Prof) {
       Swal.fire('Erreur', 'Les mots de passe ne correspondent pas', 'error');
       return;
     }
-    if (this.updatePasswordFormGroup.value.oldPassword !== this.prof.password) {
+    if (this.updatePasswordFormGroup.value.oldPassword !== this.prof.mdp_Prof) {
       Swal.fire('Erreur', 'Ancien mot de passe incorrect', 'error');
       return;
     }
 
-    this.prof.password = this.updatePasswordFormGroup.value.newPassword;
-    this.profService.updateProf(this.prof.id,this.prof).subscribe({
+    this.prof.mdp_Prof = this.updatePasswordFormGroup.value.newPassword;
+    this.profService.updateProf(this.prof.ID_Prof,this.prof).subscribe({
       next: data => {
         Swal.fire('Succès', 'Mot de passe modifié avec succès', 'success');
         this.updatePasswordFormGroup.reset();

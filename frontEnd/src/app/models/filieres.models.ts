@@ -3,9 +3,9 @@ import { ElementDeModule } from "./elementModule.models";
 import { Prof } from "./prof.models";
 
 export interface Filiere {
-    id_filiere:  number;
-    libelle:     string;
-    chef_filiere:  Prof;
-    departement: Departement;
-    elements: ElementDeModule[];
+    filiere_id :number;
+    libelle_Fil :string;
+    Abrv_Fil:string;
+    id_Dep : number;
+    id_CF :number;
 }

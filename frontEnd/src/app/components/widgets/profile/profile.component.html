@@ -13,11 +13,11 @@
         </div>
         <div class="col ms-md-n2 profile-user-info">
           <h4 class="user-name mb-0">
-            Professeur {{ prof.nom }} {{ prof.prenom }}
+            Professeur {{ prof.nom_Prof }} {{ prof.prenom_Prof }}
           </h4>
-          <h6 class="text-muted">{{ prof.specialite }}</h6>
+          <h6 class="text-muted">{{ prof.specialite_Prof }}</h6>
           <div class="user-Location">
-            <i class="fas fa-envelope"></i> {{ prof.email }}
+            <i class="fas fa-envelope"></i> {{ prof.email_prof }}
           </div>
         </div>
       </div>
@@ -58,30 +58,30 @@
                   <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
                     Nom
                   </p>
-                  <p class="col-sm-9">{{ prof.nom }}</p>
+                  <p class="col-sm-9">{{ prof.nom_Prof }}</p>
                 </div>
                 <div class="row">
                   <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
                     Prénom
                   </p>
-                  <p class="col-sm-9">{{ prof.prenom }}</p>
+                  <p class="col-sm-9">{{ prof.prenom_Prof }}</p>
                   <div class="row">
                     <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
                       Adresse e-mail
                     </p>
                     <p class="col-sm-9">
-                      {{ prof.email }}
+                      {{ prof.email_prof }}
                     </p>
                   </div>
                   <div class="row">
                     <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">
                       Mobile
                     </p>
-                    <p class="col-sm-9">{{ prof.tel }}</p>
+                    <p class="col-sm-9">{{ prof.telephone_prof }}</p>
                   </div>
                   <div class="row">
                     <p class="col-sm-3 text-muted text-sm-end mb-0">CIN</p>
-                    <p class="col-sm-9 mb-0">{{ prof.cne }}</p>
+                    <p class="col-sm-9 mb-0">{{ prof.CIN_Prof }}</p>
                   </div>
                 </div>
               </div>

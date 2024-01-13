@@ -18,17 +18,17 @@
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="prenom"
+                  formControlName="prenom_Prof"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Nom <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" formControlName="nom" />
+                <input class="form-control" type="text" formControlName="nom_Prof" />
               </div>
             </div>
-            <div class="col-12 col-sm-4">
+            <!-- <div class="col-12 col-sm-4">
               <div class="form-group local-forms angle-icon">
                 <label>Civilité <span class="login-danger">*</span></label>
                 <select class="form-control select" formControlName="civilite">
@@ -36,12 +36,12 @@
                   <option selected="" value="M">Masculin</option>
                 </select>
               </div>
-            </div>
+            </div> -->
 
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>CNE <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" formControlName="cne" />
+                <label>CIN <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" formControlName="CIN_Prof" />
               </div>
             </div>
             <div class="col-12 col-sm-4">
@@ -49,7 +49,7 @@
                 <label>E-Mail <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
-                  type="email"
+                  type="email_prof"
                   formControlName="email"
                 />
               </div>
@@ -60,14 +60,14 @@
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="specialite"
+                  formControlName="specialite_Prof"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Téléphone </label>
-                <input class="form-control" type="text" formControlName="tel" />
+                <input class="form-control" type="text" formControlName="telephone_prof" />
               </div>
             </div>
 
@@ -79,7 +79,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  formControlName="login"
+                  formControlName="nom_utilisateur_Prof"
                 />
               </div>
             </div>
@@ -89,11 +89,29 @@
                 <input
                   type="password"
                   class="form-control"
-                  formControlName="password"
+                  formControlName="mdp_Prof "
                 />
               </div>
             </div>
-
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms angle-icon">
+                <label>Role <span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="Role_Prof">
+                  <option value="Chef departement">Chef departement</option>
+                  <option selected="" value="Chef filière">Chef filière</option>
+                  <option selected="" value="Professeur">Professeur</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms angle-icon">
+                <label>Etat compte <span class="login-danger">*</span></label>
+                <select class="form-control select" formControlName="etat_compte_Prof">
+                  <option value="active">Active</option>
+                  <option value="suspendu">Suspendu</option>
+                </select>
+              </div>
+            </div>
             <div
               class="col-12 d-flex align-items-center justify-content-center"
             >

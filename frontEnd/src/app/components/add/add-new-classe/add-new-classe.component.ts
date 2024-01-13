@@ -34,7 +34,7 @@ export class AddNewClasseComponent implements OnInit {
   fetchFilieres() {
     this.filiereService.getAllFilieres().subscribe(
       (filieres: Filiere[]) => {
-        this.filieres = filieres.map(filiere => filiere.libelle);
+        this.filieres = filieres.map(filiere => filiere.libelle_Fil);
         console.log(this.filieres);
         if (this.filieres.length > 0) {
           this.newClassFormGroup.patchValue({ filiere: this.filieres[0] });

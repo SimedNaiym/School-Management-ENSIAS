@@ -23,15 +23,18 @@ export class EditProfComponent implements OnInit {
 
   ngOnInit(): void {
     this.editProfFormGroup = this.fb.group({
-      prenom: [''],
-      nom: [''],
-      civilite: [''],
-      cne: [''],
-      email: [''],
-      specialite: [''],
-      tel: [''],
-      login: [''],
-      password: ['']
+      nom_Prof: [''],
+      prenom_Prof: [''],
+      CIN_Prof: [''],
+      email_prof: [''],
+      telephone_prof: [''],
+      specialite_Prof: [''],
+      nom_utilisateur_Prof: [''],
+      mdp_Prof: [''],
+      etat_compte_Prof: [''],
+      Role_Prof: [''],
+      id_Dep: [''],
+      id_cat: ['']
     });
 
     this.setFormValues();
@@ -40,15 +43,18 @@ export class EditProfComponent implements OnInit {
   setFormValues() {
     if (this.prof) {
       this.editProfFormGroup.patchValue({
-        prenom: this.prof.prenom,
-        nom: this.prof.nom,
-        civilite: this.prof.civilite,
-        cne: this.prof.cne,
-        email: this.prof.email,
-        specialite: this.prof.specialite,
-        tel: this.prof.tel,
-        login: this.prof.login,
-        password: this.prof.password
+        prenom_Prof: this.prof.prenom_Prof,
+        nom_Prof: this.prof.nom_Prof,
+        CIN_Prof: this.prof.CIN_Prof,
+        email_prof: this.prof.email_prof,
+        specialite_Prof: this.prof.specialite_Prof,
+        telephone_prof: this.prof.telephone_prof,
+        nom_utilisateur_Prof: this.prof.nom_utilisateur_Prof,
+        mdp_Prof: this.prof.mdp_Prof,
+        Role_Prof:this.prof.Role_Prof,
+        etat_compte_Prof:this.prof.etat_compte_Prof,
+        id_Dep:this.prof.id_Dep,
+        id_cat:this.prof.id_cat
       });
     }
   }
@@ -60,7 +66,7 @@ export class EditProfComponent implements OnInit {
         ...this.editProfFormGroup.value
       };
 
-      this.profService.updateProf(updatedProf.id,updatedProf).subscribe((data) => {
+      this.profService.updateProf(updatedProf.ID_Prof,updatedProf).subscribe((data) => {
          Swal.fire('Succès', 'Professeur modifié avec succès', 'success');
         this.router.navigateByUrl('/profs');
       });

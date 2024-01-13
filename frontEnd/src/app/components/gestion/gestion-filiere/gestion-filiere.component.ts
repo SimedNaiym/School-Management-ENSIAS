@@ -69,8 +69,8 @@ export class GestionFiliereComponent implements OnInit{
       confirmButtonText: 'Oui, supprimez-le !'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.filiereService.deleteFiliere(filiere.id_filiere).subscribe();
-        this.filieres = this.filieres.filter((f) => f.id_filiere !== filiere.id_filiere);
+        this.filiereService.deleteFiliere(filiere.filiere_id).subscribe();
+        this.filieres = this.filieres.filter((f) => f.filiere_id !== filiere.filiere_id);
 
       }
     });

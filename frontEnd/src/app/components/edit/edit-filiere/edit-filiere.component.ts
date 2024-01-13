@@ -32,9 +32,10 @@ export class EditFiliereComponent implements OnInit {
   setFormValues() {
     if (this.filiere) {
       this.editFiliereFormGroup.patchValue({
-        libelle: this.filiere.libelle,
-        chefFiliere: this.filiere.chef_filiere.id,
-        departement: this.filiere.departement.libelle_Dep
+        libelle_Fil: this.filiere.libelle_Fil,
+        Abrv_Fil:this.filiere.Abrv_Fil
+        // chefFiliere: this.filiere.chef_filiere.id
+        // departement: this.filiere.departement.libelle_Dep
       });
     }
   }
@@ -45,7 +46,7 @@ export class EditFiliereComponent implements OnInit {
         ...this.filiere,
         ...this.editFiliereFormGroup.value
       };
-      this.dpService.updateFiliere(updatedFiliere.id_filiere,updatedFiliere).subscribe((data) => {
+      this.dpService.updateFiliere(updatedFiliere.filiere_id,updatedFiliere).subscribe((data) => {
           Swal.fire( 'Succès', 'Filiére modifié avec succès','success');
           this.router.navigateByUrl('/filieres');
         }

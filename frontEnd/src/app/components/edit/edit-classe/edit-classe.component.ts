@@ -36,7 +36,7 @@ export class EditClasseComponent implements OnInit {
       this.editClasseFormGroup.patchValue({
         libelle: this.classe.libelle,
         nbrEleves: this.classe.nbrEleves,
-        filiere: this.classe.filiere.libelle
+        filiere: this.classe.filiere.libelle_Fil
       });
     }
   }

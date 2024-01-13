@@ -40,15 +40,14 @@ editProfFormGroup!: FormGroup;
   setFormValues() {
     if (this.prof) {
       this.editProfFormGroup.patchValue({
-        prenom: this.prof.prenom,
-        nom: this.prof.nom,
-        civilite: this.prof.civilite,
-        cne: this.prof.cne,
-        email: this.prof.email,
-        specialite: this.prof.specialite,
-        tel: this.prof.tel,
-        login: this.prof.login,
-        password: this.prof.password
+        prenom: this.prof.prenom_Prof,
+        nom: this.prof.nom_Prof,
+        cne: this.prof.CIN_Prof,
+        email: this.prof.email_prof,
+        specialite: this.prof.specialite_Prof,
+        tel: this.prof.telephone_prof,
+        login: this.prof.nom_utilisateur_Prof,
+        password: this.prof.mdp_Prof
       });
     }
   }
@@ -60,7 +59,7 @@ editProfFormGroup!: FormGroup;
         ...this.editProfFormGroup.value
       };
 
-      this.profService.updateProf(updatedProf.id,updatedProf).subscribe((data) => {
+      this.profService.updateProf(updatedProf.ID_Prof,updatedProf).subscribe((data) => {
          Swal.fire('Succès', 'Profile modifié avec succès', 'success');
         this.router.navigateByUrl('/home');
       });

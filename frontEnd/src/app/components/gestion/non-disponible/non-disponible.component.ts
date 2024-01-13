@@ -15,15 +15,17 @@ export class NonDisponibleComponent {
       id: 1,
       jour: 'Lundi',
       enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: '',
-        role:''
+        ID_Prof: 1, nom_Prof: 'Ahmed', prenom_Prof: 'Ahmed',
+        telephone_prof: '',
+        CIN_Prof: '',
+        email_prof: '',
+        nom_utilisateur_Prof: '',
+        mdp_Prof: '',
+        specialite_Prof: '',
+        Role_Prof: '',
+        etat_compte_Prof: '',
+        id_Dep: 0,
+        id_cat: 0
       },
       periode: '8h-10h'
     },
@@ -31,48 +33,54 @@ export class NonDisponibleComponent {
       id: 2,
       jour: 'Mardi',
        enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: '',
-        role:''
-      },
+         ID_Prof: 1, nom_Prof: 'Ahmed', prenom_Prof: 'Ahmed',
+         telephone_prof: '',
+         CIN_Prof: '',
+         email_prof: '',
+         nom_utilisateur_Prof: '',
+         mdp_Prof: '',
+         specialite_Prof: '',
+         Role_Prof: '',
+         etat_compte_Prof: '',
+         id_Dep: 0,
+         id_cat: 0
+       },
       periode: '8h-10h'
     },
     {
       id: 3,
       jour: 'Mercredi',
-      enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: '',
-        role:''
-      },
+       enseignant: {
+         ID_Prof: 1, nom_Prof: 'Ahmed', prenom_Prof: 'Ahmed',
+         telephone_prof: '',
+         CIN_Prof: '',
+         email_prof: '',
+         nom_utilisateur_Prof: '',
+         mdp_Prof: '',
+         specialite_Prof: '',
+         Role_Prof: '',
+         etat_compte_Prof: '',
+         id_Dep: 0,
+         id_cat: 0
+       },
       periode: '8h-10h'
     },
     {
       id: 4,
       jour: 'Jeudi',
-      enseignant: {
-        id: 1, nom: 'Ahmed', prenom: 'Ahmed',
-        civilite: '',
-        tel: '',
-        cne: '',
-        email: '',
-        login: '',
-        password: '',
-        specialite: '',
-        role:''
-      },
+       enseignant: {
+         ID_Prof: 1, nom_Prof: 'Ahmed', prenom_Prof: 'Ahmed',
+         telephone_prof: '',
+         CIN_Prof: '',
+         email_prof: '',
+         nom_utilisateur_Prof: '',
+         mdp_Prof: '',
+         specialite_Prof: '',
+         Role_Prof: '',
+         etat_compte_Prof: '',
+         id_Dep: 0,
+         id_cat: 0
+       },
       periode: '8h-10h'
     },
   ];
