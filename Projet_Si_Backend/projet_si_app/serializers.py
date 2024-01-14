@@ -49,9 +49,16 @@ class ModuleSerializer(serializers.ModelSerializer):
 class ElementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Element
-        fields = ['id_Ele',
-                  'libelle_Ele',
-                  'id_module'
+        fields = ['id_element',
+                  'libelle',
+                  'module',
+                  'volumeHoraire',
+                  'profCours',
+                  'vhCours',
+                  'profTD',
+                  'vhTD',
+                  'profTP',
+                  'vhTP'
                   ]
 
 

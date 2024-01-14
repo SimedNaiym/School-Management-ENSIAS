@@ -32,7 +32,7 @@ export class GestionFiliereComponent implements OnInit{
     this.searchFormGroup = this.fb.group({
       keyword: this.fb.control('')
     });
-    this.filiereService.searchProfs_().subscribe(
+    this.filiereService.searchFiliere_().subscribe(
       (response)=>{
         this.filieres=response
         console.log(this.filieres)
@@ -74,7 +74,7 @@ export class GestionFiliereComponent implements OnInit{
       confirmButtonText: 'Oui, supprimez-le !'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.filiereService.deleteFiliere(filiere.filiere_id).subscribe();
+        this.filiereService.deleteFiliere_(filiere.filiere_id).subscribe();
         this.filieres = this.filieres.filter((f) => f.filiere_id !== filiere.filiere_id);
 
       }

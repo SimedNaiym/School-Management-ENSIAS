@@ -5,8 +5,7 @@ import { Semestre } from "./semestre.models";
 
 export interface Module {
     id_module:number;
-    libelle:string;
-    filiere:Filiere;
-    responsable:Prof;
+    libelle_Mod:string;
+    id_Prof_CM:number;
 
 }

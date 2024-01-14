@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Departement } from 'src/app/models/departement.models';
 import { Module } from 'src/app/models/modules.models';
 import { DepartmentService } from 'src/app/services/department.service';
+import { ModuleService } from 'src/app/services/module.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-module',
@@ -22,6 +23,7 @@ export class ModuleComponent {
   displayedPages: number[] = [];
   constructor(
     private departmentService: DepartmentService,
+    private moduleService:ModuleService,
     private fb: FormBuilder,
     private router: Router
   ) {}
@@ -30,7 +32,9 @@ export class ModuleComponent {
      this.searchFormGroup = this.fb.group({
       keyword: this.fb.control('')
     });
-    this.handleSearchDepartments();
+    this.moduleService.searchModules_().subscribe((response)=>{
+      this.modules=response
+    })
   }
    handleEditeDepart(departEdit: Module) {
     this.router.navigateByUrl('/departements/edit',{state :departEdit});
@@ -68,7 +72,7 @@ export class ModuleComponent {
       confirmButtonText: 'Oui, supprimez-le !'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.departmentService.deleteDepartment(module.id_module).subscribe();
+        this.moduleService.deleteModule_(module.id_module).subscribe();
          this.modules = this.modules.filter((d) => d.id_module !== module.id_module);
 
       }

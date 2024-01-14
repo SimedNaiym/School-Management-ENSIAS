@@ -13,13 +13,13 @@ export class FiliereService {
 
   url="http://127.0.0.1:8000/api/allFiliere"
    constructor(private http:HttpClient) { }
-  public searchProfs_():Observable<Filiere[]>{
+  public searchFiliere_():Observable<Filiere[]>{
     return this.http.get<Filiere[]>(this.url)
   }
-   public saveProf_(Prof: Filiere):Observable<Filiere>{
+   public saveFiliere_(Prof: Filiere):Observable<Filiere>{
     return this.http.post<Filiere>(this.url,Prof);
   }
-  public deleteProf_(id: number): Observable<any>{
+  public deleteFiliere_(id: number): Observable<any>{
     return this.http.delete(this.url+"/"+id);
   }
 // ---------

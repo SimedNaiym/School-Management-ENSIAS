@@ -6,6 +6,8 @@ import { FiliereService } from '../../../services/filiere.service';
 import { Filiere } from '../../../models/filieres.models';
 import { Departement } from '../../../models/departement.models';
 import { DepartmentService } from '../../../services/department.service';
+import { ProfServiceService } from 'src/app/services/prof-service.service';
+import { Prof } from 'src/app/models/prof.models';
 
 @Component({
   selector: 'app-add-new-filiere',
@@ -15,23 +17,32 @@ import { DepartmentService } from '../../../services/department.service';
 export class AddNewFiliereComponent implements OnInit {
   newFiliereFormGroup!: FormGroup;
   departements: Departement[] = [];
-
+  profs:Prof[]=[]
   constructor(
     private fb: FormBuilder,
     private filiereService: FiliereService,
     private departementService: DepartmentService,
+    private profService:ProfServiceService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.newFiliereFormGroup = this.fb.group({
-      libelle: [null, Validators.required],
-      nombreSem: [null, Validators.required],
-      chefFiliere: [null, Validators.required],
-      departement: [null, Validators.required],
+      libelle_Fil: [null, Validators.required],
+      Abrv_Fil: [null, Validators.required],
+      id_Dep: [null, Validators.required],
+      id_CF: [null, Validators.required],
     });
-
-    this.getDepartements();
+    this.departementService.searchDepartments_().subscribe(
+      (response)=>{
+        this.departements=response
+      }
+    )
+    this.profService.searchProfs_().subscribe(
+      (response)=>{
+        this.profs=response
+      }
+    )
   }
 
   getDepartements() {
@@ -48,7 +59,7 @@ export class AddNewFiliereComponent implements OnInit {
   handleAddFiliere() {
     if (this.newFiliereFormGroup.valid) {
       const newFiliere: Filiere = this.newFiliereFormGroup.value;
-      this.filiereService.saveFiliere(newFiliere).subscribe({
+      this.filiereService.saveFiliere_(newFiliere).subscribe({
         next: () => {
           Swal.fire('Succès', 'Filière ajoutée avec succès', 'success');
           this.router.navigateByUrl('/filieres');

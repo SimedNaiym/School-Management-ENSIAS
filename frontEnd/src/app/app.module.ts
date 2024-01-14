@@ -37,6 +37,7 @@ import { EditProfileComponent } from './components/edit/edit-profile/edit-profil
 import { NonDisponibleComponent } from './components/gestion/non-disponible/non-disponible.component';
 import { ModuleComponent } from './components/gestion/module/module.component';
 import { ElementModuleComponent } from './components/gestion/element-module/element-module.component';
+import { AddNewModuleComponent } from './components/add/add-new-module/add-new-module.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ElementModuleComponent } from './components/gestion/element-module/elem
     NonDisponibleComponent,
     ModuleComponent,
     ElementModuleComponent,
+    AddNewModuleComponent,
   ],
   imports: [
     BrowserModule,
