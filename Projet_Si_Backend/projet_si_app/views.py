@@ -3,8 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from projet_si_app.models import Departement,Filiere,Professeur
-from projet_si_app.serializers import DepartementSerializer,FiliereSerializer,ProfesseurSerializer
+from projet_si_app.models import Departement,Filiere,Professeur,Categorie,Module,Element
+from projet_si_app.serializers import DepartementSerializer,FiliereSerializer,ProfesseurSerializer,CategorieSerializer,ModuleSerializer,ElementSerializer
 
 from django.core.files.storage import default_storage
 
@@ -89,4 +89,85 @@ def ProfesseurApi(request,id=0):
     elif request.method=='DELETE':
         professeur=Professeur.objects.get(ID_Prof=id)
         professeur.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
+    
+@csrf_exempt
+def CategorieApi(request,id=0):
+    if request.method=='GET':
+        categorie = Categorie.objects.all()
+        categorie_serializer = CategorieSerializer(categorie, many=True)
+        return JsonResponse(categorie_serializer.data, safe=False)
+    elif request.method=='POST':
+        categorie_data=JSONParser().parse(request)
+        categorie_serializer = CategorieSerializer(data=categorie_data)
+        if categorie_serializer.is_valid():
+            categorie_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    elif request.method=='PUT':
+        categorie_data = JSONParser().parse(request)
+        categorie=Categorie.objects.get(id_cat=categorie_data['id_cat'])
+        categorie_serializer=CategorieSerializer(categorie,data=categorie_data)
+        if categorie_serializer.is_valid():
+            categorie_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
+
+    elif request.method=='DELETE':
+        categorie=Categorie.objects.get(id_cat=id)
+        categorie.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
+    
+@csrf_exempt
+def ModuleApi(request,id=0):
+    if request.method=='GET':
+        module = Module.objects.all()
+        module_serializer = ModuleSerializer(module, many=True)
+        return JsonResponse(module_serializer.data, safe=False)
+    elif request.method=='POST':
+        module_data=JSONParser().parse(request)
+        module_serializer = ModuleSerializer(data=module_data)
+        if module_serializer.is_valid():
+            module_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    elif request.method=='PUT':
+        module_data = JSONParser().parse(request)
+        module=Module.objects.get(id_module=module_data['id_module'])
+        module_serializer=ModuleSerializer(module,data=module_data)
+        if module_serializer.is_valid():
+            module_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
+
+    elif request.method=='DELETE':
+        module=Categorie.objects.get(id_module=id)
+        module.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
+    
+@csrf_exempt
+def ElementApi(request,id=0):
+    if request.method=='GET':
+        element = Element.objects.all()
+        element_serializer = ElementSerializer(element, many=True)
+        return JsonResponse(element_serializer.data, safe=False)
+    elif request.method=='POST':
+        element_data=JSONParser().parse(request)
+        element_serializer = ElementSerializer(data=element_data)
+        if element_serializer.is_valid():
+            element_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    elif request.method=='PUT':
+        element_data = JSONParser().parse(request)
+        element=Element.objects.get(id_Ele=element_data['id_Ele'])
+        element_serializer=ElementSerializer(element,data=element_data)
+        if element_serializer.is_valid():
+            element_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
+
+    elif request.method=='DELETE':
+        element=Element.objects.get(id_Ele=id)
+        element.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)

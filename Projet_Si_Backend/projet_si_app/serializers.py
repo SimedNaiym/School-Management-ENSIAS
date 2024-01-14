@@ -32,6 +32,27 @@ class FiliereSerializer(serializers.ModelSerializer):
                   'Abrv_Fil',
                   'id_Dep',
                   'id_CF']
+class CategorieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categorie
+        fields = ['id_cat',
+                  'libelle_cat',
+                  'volum_hor'
+                  ]
+class ModuleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Module
+        fields = ['id_module',
+                  'libelle_Mod',
+                  'id_Prof_CM'
+                  ]
+class ElementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Element
+        fields = ['id_Ele',
+                  'libelle_Ele',
+                  'id_module'
+                  ]
 
 
              

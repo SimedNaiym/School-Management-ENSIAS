@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Categorie } from 'src/app/models/categorie.models';
 import { Departement } from 'src/app/models/departement.models';
 import { Prof } from 'src/app/models/prof.models';
+import { CategorieService } from 'src/app/services/categorie.service';
 import { DepartmentService } from 'src/app/services/department.service';
 import { ProfServiceService } from 'src/app/services/prof-service.service';
 import Swal from 'sweetalert2';
@@ -15,16 +17,22 @@ import Swal from 'sweetalert2';
 export class AddNewProfComponent {
   newProfFormGroup!: FormGroup;
   departements:Departement[]=[]
-  constructor(private fb: FormBuilder,private profService : ProfServiceService, private router:Router,
+  categories:Categorie[]=[]
+  constructor(private fb: FormBuilder,private profService : ProfServiceService,private catService:CategorieService ,private router:Router,
     private DepartementService:DepartmentService) {}
 
   ngOnInit(): void {
     this.DepartementService.searchDepartments_().subscribe(
       (response)=>{
         this.departements=response
-        console.log(this.departements)
       }
     )
+    this.catService.searchCats_().subscribe(
+      (response)=>{
+        this.categories=response
+      }
+    )
+    console.log(this.categories)
     this.newProfFormGroup = this.fb.group({
     prenom: this.fb.control(null, [Validators.required]),
     nom: this.fb.control(null, [Validators.required]),

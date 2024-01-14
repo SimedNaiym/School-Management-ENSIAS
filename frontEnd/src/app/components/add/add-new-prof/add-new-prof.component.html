@@ -78,9 +78,7 @@
               <div class="form-group local-forms">
                 <label>Categorie<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="categorie">
-                  <option value=0>Active</option>
-                  <option value=1>Suspendu</option>
-                  <option value=2>Arrete</option>
+                  <option *ngfor="let cat of categories" [value]="cat.id_cat">{{cat.libelle_cat}}</option>
                 </select>
               </div>
             </div>
