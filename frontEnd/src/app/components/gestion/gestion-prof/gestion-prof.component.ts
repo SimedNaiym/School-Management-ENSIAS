@@ -37,7 +37,11 @@ export class GestionProfComponent implements OnInit {
     this.searchFormGroup = this.fb.group({
       keyword: this.fb.control('')
     });
-    this.handleSearchCustomers();
+    this.profService.searchProfs_().subscribe(
+      (respone)=>{
+        this.profs=respone
+      }
+    )
     
   } 
 
@@ -82,7 +86,7 @@ export class GestionProfComponent implements OnInit {
     confirmButtonText: 'Oui, supprimez-le!'
   }).then((result) => {
     if (result.isConfirmed) {
-      this.profService.deleteProf(prof.ID_Prof).subscribe();;
+      this.profService.deleteProf_(prof.ID_Prof).subscribe();;
       this.profs.splice( this.profs.indexOf(prof),1);
 
     }

@@ -11,8 +11,14 @@ import { PageProf } from '../models/profPage.models';
 export class ProfServiceService {
   url="http://127.0.0.1:8000/api/allProfesseur"
    constructor(private http:HttpClient) { }
+  public searchProfs_():Observable<Prof[]>{
+    return this.http.get<Prof[]>(this.url)
+  }
    public saveProf_(Prof: Prof):Observable<Prof>{
     return this.http.post<Prof>(this.url,Prof);
+  }
+  public deleteProf_(id: number): Observable<any>{
+    return this.http.delete(this.url+"/"+id);
   }
 // ---------
    public getProfs(page: number, size: number): Observable<PageProf> {

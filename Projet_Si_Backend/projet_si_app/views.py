@@ -3,15 +3,13 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from projet_si_app.models import Departement
-from projet_si_app.serializers import DepartementSerializer
+from projet_si_app.models import Departement,Filiere,Professeur
+from projet_si_app.serializers import DepartementSerializer,FiliereSerializer,ProfesseurSerializer
 
 from django.core.files.storage import default_storage
 
 # Create your views here.
-@csrf_exempt
-def test(request):
-    return JsonResponse({"message":"Hello from backend"})
+
 @csrf_exempt
 def departmentApi(request,id=0):
     if request.method=='GET':
@@ -39,39 +37,56 @@ def departmentApi(request,id=0):
         department.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
 
-# @csrf_exempt
-# def employeeApi(request,id=0):
-#     if request.method=='GET':
-#         employees = Employees.objects.all()
-#         employees_serializer = EmployeeSerializer(employees, many=True)
-#         return JsonResponse(employees_serializer.data, safe=False)
+@csrf_exempt
+def FiliereApi(request,id=0):
+    if request.method=='GET':
+        filieres = Filiere.objects.all()
+        filieres_serializer = FiliereSerializer(filieres, many=True)
+        return JsonResponse(filieres_serializer.data, safe=False)
+    elif request.method=='POST':
+        filiere_data=JSONParser().parse(request)
+        filiere_serializer = FiliereSerializer(data=filiere_data)
+        if filiere_serializer.is_valid():
+            filiere_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    elif request.method=='PUT':
+        filiere_data = JSONParser().parse(request)
+        filiere=Filiere.objects.get(filiere_id=filiere_data['filiere_id'])
+        filiere_serializer=FiliereSerializer(filiere,data=filiere_data)
+        if filiere_serializer.is_valid():
+            filiere_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
 
-#     elif request.method=='POST':
-#         employee_data=JSONParser().parse(request)
-#         employee_serializer = EmployeeSerializer(data=employee_data)
-#         if employee_serializer.is_valid():
-#             employee_serializer.save()
-#             return JsonResponse("Added Successfully!!" , safe=False)
-#         return JsonResponse("Failed to Add.",safe=False)
-    
-#     elif request.method=='PUT':
-#         employee_data = JSONParser().parse(request)
-#         employee=Employees.objects.get(EmployeeId=employee_data['EmployeeId'])
-#         employee_serializer=EmployeeSerializer(employee,data=employee_data)
-#         if employee_serializer.is_valid():
-#             employee_serializer.save()
-#             return JsonResponse("Updated Successfully!!", safe=False)
-#         return JsonResponse("Failed to Update.", safe=False)
+    elif request.method=='DELETE':
+        filiere=Filiere.objects.get(filiere_id=id)
+        filiere.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
 
-#     elif request.method=='DELETE':
-#         employee=Employees.objects.get(EmployeeId=id)
-#         employee.delete()
-#         return JsonResponse("Deleted Succeffully!!", safe=False)
+@csrf_exempt
+def ProfesseurApi(request,id=0):
+    if request.method=='GET':
+        professeur = Professeur.objects.all()
+        professeur_serializer = ProfesseurSerializer(professeur, many=True)
+        return JsonResponse(professeur_serializer.data, safe=False)
+    elif request.method=='POST':
+        professeur_data=JSONParser().parse(request)
+        professeur_serializer = ProfesseurSerializer(data=professeur_data)
+        if professeur_serializer.is_valid():
+            professeur_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    elif request.method=='PUT':
+        professeur_data = JSONParser().parse(request)
+        professeur=Professeur.objects.get(ID_Prof=professeur_data['DepartmentId'])
+        professeur_serializer=ProfesseurSerializer(professeur,data=professeur_data)
+        if professeur_serializer.is_valid():
+            professeur_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
 
-
-# @csrf_exempt
-# def SaveFile(request):
-#     file=request.FILES['uploadedFile']
-#     file_name = default_storage.save(file.name,file)
-
-#     return JsonResponse(file_name,safe=False)
+    elif request.method=='DELETE':
+        professeur=Professeur.objects.get(ID_Prof=id)
+        professeur.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
