@@ -25,7 +25,7 @@ def departmentApi(request,id=0):
         return JsonResponse("Failed to Add.",safe=False)
     elif request.method=='PUT':
         department_data = JSONParser().parse(request)
-        department=Departement.objects.get(DepartmentId=department_data['DepartmentId'])
+        department=Departement.objects.get(id_Dep=id)
         department_serializer=DepartementSerializer(department,data=department_data)
         if department_serializer.is_valid():
             department_serializer.save()
@@ -52,7 +52,7 @@ def FiliereApi(request,id=0):
         return JsonResponse("Failed to Add.",safe=False)
     elif request.method=='PUT':
         filiere_data = JSONParser().parse(request)
-        filiere=Filiere.objects.get(filiere_id=filiere_data['filiere_id'])
+        filiere=Filiere.objects.get(filiere_id=id)
         filiere_serializer=FiliereSerializer(filiere,data=filiere_data)
         if filiere_serializer.is_valid():
             filiere_serializer.save()
@@ -79,7 +79,7 @@ def ProfesseurApi(request,id=0):
         return JsonResponse("Failed to Add.",safe=False)
     elif request.method=='PUT':
         professeur_data = JSONParser().parse(request)
-        professeur=Professeur.objects.get(ID_Prof=professeur_data['DepartmentId'])
+        professeur=Professeur.objects.get(ID_Prof=id)
         professeur_serializer=ProfesseurSerializer(professeur,data=professeur_data)
         if professeur_serializer.is_valid():
             professeur_serializer.save()
