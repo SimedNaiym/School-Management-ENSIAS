@@ -32,7 +32,12 @@ export class GestionFiliereComponent implements OnInit{
     this.searchFormGroup = this.fb.group({
       keyword: this.fb.control('')
     });
-    this.handleSearchFilieres();
+    this.filiereService.searchProfs_().subscribe(
+      (response)=>{
+        this.filieres=response
+        console.log(this.filieres)
+      }
+    );
   }
   handleEditeFiliere(filiereEdit: Filiere) {
     this.router.navigateByUrl('/filieres/edit',{state :filiereEdit});

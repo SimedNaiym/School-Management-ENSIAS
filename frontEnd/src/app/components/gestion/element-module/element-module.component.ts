@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Departement } from 'src/app/models/departement.models';
 import { ElementDeModule } from 'src/app/models/elementModule.models';
 import { DepartmentService } from 'src/app/services/department.service';
+import { ElementService } from 'src/app/services/element.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-element-module',
@@ -22,6 +23,7 @@ export class ElementModuleComponent {
  displayedPages: number[] = [];
  constructor(
    private departmentService: DepartmentService,
+   private elementService:ElementService,
    private fb: FormBuilder,
    private router: Router
  ) {}
@@ -30,7 +32,12 @@ export class ElementModuleComponent {
     this.searchFormGroup = this.fb.group({
      keyword: this.fb.control('')
    });
-   this.handleSearchDepartments();
+   this.elementService.searchProfs_().subscribe(
+    (response)=>{
+      this.elements=response
+      console.log(this.elements)
+    }
+   )
  }
   handleEditeDepart(departEdit: ElementDeModule) {
    this.router.navigateByUrl('/departements/edit',{state :departEdit});

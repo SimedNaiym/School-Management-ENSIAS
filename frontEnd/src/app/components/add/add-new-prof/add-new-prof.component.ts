@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-new-prof.component.css']
 })
 export class AddNewProfComponent {
+  roles=["Chef departement","Chef filiere","Responsable module","Professeur"]
   newProfFormGroup!: FormGroup;
   departements:Departement[]=[]
   categories:Categorie[]=[]
@@ -55,6 +56,7 @@ export class AddNewProfComponent {
       next: data => {
         Swal.fire('Succès', 'Professeur ajouté avec succès', 'success');
         this.router.navigateByUrl('/profs');
+        console.log(data)
       },
       error: err => {
         console.log(err);

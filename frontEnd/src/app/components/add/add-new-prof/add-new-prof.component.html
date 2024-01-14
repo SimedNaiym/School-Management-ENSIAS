@@ -56,11 +56,19 @@
                 <input class="form-control" type="text" formControlName="tel" />
               </div>
             </div>
-            <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-2">
               <div class="form-group local-forms">
                 <label>département<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="departement">
                   <option *ngFor="let dep of departements" [value]="dep.id_Dep">{{ dep.libelle_Dep }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-2">
+              <div class="form-group local-forms">
+                <label>Rôle<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="role">
+                  <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
                 </select>
               </div>
             </div>
@@ -78,7 +86,8 @@
               <div class="form-group local-forms">
                 <label>Categorie<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="categorie">
-                  <option *ngfor="let cat of categories" [value]="cat.id_cat">{{cat.libelle_cat}}</option>
+                    <option value= 1>professeur</option>
+                    <option value=2>asist prof</option>
                 </select>
               </div>
             </div>

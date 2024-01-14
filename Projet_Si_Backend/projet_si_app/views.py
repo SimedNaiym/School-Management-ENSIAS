@@ -141,7 +141,7 @@ def ModuleApi(request,id=0):
         return JsonResponse("Failed to Update.", safe=False)
 
     elif request.method=='DELETE':
-        module=Categorie.objects.get(id_module=id)
+        module=Module.objects.get(id_module=id)
         module.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
     
