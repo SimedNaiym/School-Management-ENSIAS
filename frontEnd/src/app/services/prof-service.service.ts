@@ -9,9 +9,12 @@ import { PageProf } from '../models/profPage.models';
   providedIn: 'root'
 })
 export class ProfServiceService {
-
+  url="http://127.0.0.1:8000/api/allProfesseur"
    constructor(private http:HttpClient) { }
-
+   public saveProf_(Prof: Prof):Observable<Prof>{
+    return this.http.post<Prof>(this.url,Prof);
+  }
+// ---------
    public getProfs(page: number, size: number): Observable<PageProf> {
     return this.http.get<PageProf>(environment.backendHost + "/enseignants?page=" + page + "&size=" + size);
   }

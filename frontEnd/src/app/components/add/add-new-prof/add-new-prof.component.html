@@ -35,22 +35,12 @@
               </div>
             </div>
             <div class="col-12 col-sm-4">
-              <div class="form-group local-forms angle-icon">
-                <label>Civilité <span class="login-danger">*</span></label>
-                <select class="form-control select" formControlName="civilite">
-                  <option value="F">Féminin</option>
-                  <option value="M">Masculin</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>CNE <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" formControlName="cne" />
+                <input class="form-control" type="text" formControlName="cin" />
               </div>
             </div>
-            <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-6">
               <div class="form-group local-forms">
                 <label>E-Mail <span class="login-danger">*</span></label>
                 <input
@@ -58,6 +48,20 @@
                   type="email"
                   formControlName="email"
                 />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group local-forms">
+                <label>Téléphone <span class="login-danger">*</span></label>
+                <input class="form-control" type="text" formControlName="tel" />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>département<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="departement">
+                  <option *ngFor="let dep of departements" [value]="dep.id_Dep">{{ dep.libelle_Dep }}</option>
+                </select>
               </div>
             </div>
             <div class="col-12 col-sm-4">
@@ -72,11 +76,14 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>Téléphone </label>
-                <input class="form-control" type="text" formControlName="tel" />
+                <label>Categorie<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="categorie">
+                  <option value=0>Active</option>
+                  <option value=1>Suspendu</option>
+                  <option value=2>Arrete</option>
+                </select>
               </div>
             </div>
-
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label
@@ -99,7 +106,16 @@
                 />
               </div>
             </div>
-
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Etat de compte<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="etat">
+                  <option value="active">Active</option>
+                  <option value="suspendu">Suspendu</option>
+                  <option value="arrete">Arrete</option>
+                </select>
+              </div>
+            </div>
             <div
               class="col-12 d-flex align-items-center justify-content-center"
             >
