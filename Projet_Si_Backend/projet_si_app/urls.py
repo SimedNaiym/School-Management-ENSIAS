@@ -15,7 +15,9 @@ urlpatterns=[
     path('allModule', views.ModuleApi),
     path('allModule/<int:id>', views.ModuleApi),
     path('allElement', views.ElementApi),
-    path('allElement/<int:id>', views.ElementApi)
+    path('allElement/<int:id>', views.ElementApi),
+    path('allSalle', views.SalleApi),
+    path('allSalle/<int:id>', views.SalleApi)
 
 
 

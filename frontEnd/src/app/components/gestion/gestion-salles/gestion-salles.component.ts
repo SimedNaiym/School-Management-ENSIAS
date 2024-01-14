@@ -31,7 +31,11 @@ export class GestionSallesComponent implements OnInit {
     this.searchFormGroup = this.fb.group({
       keyword: this.fb.control(''),
     });
-    this.handleSearchSalles();
+    this.salleService.searchSalles_().subscribe(
+      (response)=>{
+        this.salles=response
+      }
+    )
   }
 
 
@@ -51,7 +55,7 @@ export class GestionSallesComponent implements OnInit {
       confirmButtonText: 'Oui, supprimez-la !'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.salleService.deleteSalle(salle.id).subscribe();;
+        this.salleService.deleteSalle_(salle.id_salle).subscribe();;
         this.salles.splice(this.salles.indexOf(salle), 1);
       }
     });

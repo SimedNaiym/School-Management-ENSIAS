@@ -19,15 +19,18 @@ export class AddNewSalleComponent {
   ngOnInit(): void {
     this.newSalleFormGroup = this.fb.group({
       capacite: this.fb.control(null, [Validators.required]),
-      typeSalle: this.fb.control(null, [Validators.required]),
-      numSalle: this.fb.control(null, [Validators.required])
+      lib_salle: this.fb.control(null, [Validators.required]),
+      type_salle: this.fb.control(null, [Validators.required]),
+      ordinateur: this.fb.control(null, [Validators.required]),
+      projecteur: this.fb.control(null, [Validators.required]),
+      etat: this.fb.control(null, [Validators.required])
     });
   }
 
   handleAddDepartement() {
     if (this.newSalleFormGroup.valid) {
     const newSalle: Salle = this.newSalleFormGroup.value;
-    this.dpService.saveSalle(newSalle).subscribe({
+    this.dpService.saveSalle_(newSalle).subscribe({
       next: data => {
         Swal.fire('Succès', 'Salle ajouté avec succès', 'success');
         this.router.navigateByUrl('/salles');

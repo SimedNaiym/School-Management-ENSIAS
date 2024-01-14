@@ -60,10 +60,12 @@
                 </div>
               </th>
               <th>ID</th>
-              <th>numéro</th>
-              <th>capacité</th>
-              <th>type</th>
-
+              <th>Numéro</th>
+              <th>Capacité</th>
+              <th>Type</th>
+              <th>Projecteur</th>
+              <th>Ordinateur</th>
+              <!-- <th>Etat</th> -->
               <th class="text-end">Action</th>
             </tr>
           </thead>
@@ -78,10 +80,13 @@
                   />
                 </div>
               </td>
-              <td>{{ salle.id }}</td>
-              <td>{{ salle.numSalle }}</td>
+              <td>{{ salle.id_salle }}</td>
+              <td>{{ salle.lib_salle }}</td>
               <td>{{ salle.capacite }}</td>
-              <td>{{ salle.typeSalle }}</td>
+              <td>{{ salle.type_salle }}</td>
+              <td>{{ salle.projecteur }}</td>
+              <td>{{ salle.ordinateur }}</td>
+              <td>{{ salle.etat }}</td>
               <td class="text-end">
                 <div class="actions">
                   <button

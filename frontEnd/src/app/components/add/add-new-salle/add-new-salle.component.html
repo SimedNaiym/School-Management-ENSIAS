@@ -23,11 +23,11 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>numéro <span class="login-danger">*</span></label>
+                <label>label <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
-                  formControlName="numSalle"
-                  type="number"
+                  formControlName="lib_salle"
+                  type="text"
                 />
               </div>
             </div>
@@ -43,15 +43,43 @@
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
-                <label>type <span class="login-danger">*</span></label>
+                <label>type<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="type_salle">
+                  <option value="active">Cours</option>
+                  <option value="suspendu">TD</option>
+                  <option value="arrete">TP</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Nombre d'ordinateur <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
-                  formControlName="typeSalle"
-                  type="text"
+                  formControlName="ordinateur"
+                  type="number"
                 />
               </div>
             </div>
-
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>Nombre de projecteur <span class="login-danger">*</span></label>
+                <input
+                  class="form-control"
+                  formControlName="projecteur"
+                  type="number"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group local-forms">
+                <label>type<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="etat">
+                  <option value="active">Active</option>
+                  <option value="suspendu">suspendu</option>
+                </select>
+              </div>
+            </div>
             <div
               class="col-12 d-flex align-items-center justify-content-center"
             >

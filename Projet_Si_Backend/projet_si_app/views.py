@@ -3,8 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from projet_si_app.models import Departement,Filiere,Professeur,Categorie,Module,Element
-from projet_si_app.serializers import DepartementSerializer,FiliereSerializer,ProfesseurSerializer,CategorieSerializer,ModuleSerializer,ElementSerializer
+from projet_si_app.models import Departement,Filiere,Professeur,Categorie,Module,Element,Salle
+from projet_si_app.serializers import DepartementSerializer,FiliereSerializer,ProfesseurSerializer,CategorieSerializer,ModuleSerializer,ElementSerializer,SalleSerializer
 
 from django.core.files.storage import default_storage
 
@@ -147,6 +147,7 @@ def ModuleApi(request,id=0):
     
 @csrf_exempt
 def ElementApi(request,id=0):
+
     if request.method=='GET':
         element = Element.objects.all()
         element_serializer = ElementSerializer(element, many=True)
@@ -170,4 +171,31 @@ def ElementApi(request,id=0):
     elif request.method=='DELETE':
         element=Element.objects.get(id_Ele=id)
         element.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
+    
+@csrf_exempt
+def SalleApi(request,id=0):
+    if request.method=='GET':
+        salle = Salle.objects.all()
+        salle_serializer = SalleSerializer(salle, many=True)
+        return JsonResponse(salle_serializer.data, safe=False)
+    elif request.method=='POST':
+        salle_data=JSONParser().parse(request)
+        salle_serializer = SalleSerializer(data=salle_data)
+        if salle_serializer.is_valid():
+            salle_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    elif request.method=='PUT':
+        salle_data = JSONParser().parse(request)
+        salle=Salle.objects.get(id_salle=id)
+        salle_serializer=SalleSerializer(salle,data=salle_data)
+        if salle_serializer.is_valid():
+            salle_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
+
+    elif request.method=='DELETE':
+        salle=Salle.objects.get(id_salle=id)
+        salle.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)

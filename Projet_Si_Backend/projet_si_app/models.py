@@ -85,10 +85,6 @@ class Element(models.Model):
     id_Ele = models.AutoField(primary_key=True)
     libelle_Ele = models.CharField(max_length=255)
     id_module = models.ForeignKey('Module', on_delete=models.CASCADE)
-class Element(models.Model):
-    id_Ele = models.AutoField(primary_key=True)
-    libelle_Ele = models.CharField(max_length=255)
-    id_module = models.ForeignKey('Module', on_delete=models.CASCADE)
    
     # id_element=models.AutoField(primary_key=True)
     # libelle=models.CharField(max_length=255)
@@ -107,13 +103,14 @@ class Element(models.Model):
     # def __str__(self):
     #     return self.libelle_Ele
 class Salle(models.Model):
-    id_salle = models.IntegerField(primary_key=True)
+    id_salle = models.AutoField(primary_key=True)
     capacite = models.IntegerField()
-    libelle_Salle = models.CharField(max_length=255)
+    lib_salle = models.CharField(max_length=255)
     type_salle = models.CharField(max_length=255)
     ordinateur = models.IntegerField()
     projecteur = models.IntegerField()
+    etat=models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.libelle_Salle
+    # def __str__(self):
+    #     return self.libelle_Salle
         

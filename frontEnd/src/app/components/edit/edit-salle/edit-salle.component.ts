@@ -25,8 +25,11 @@ export class EditSalleComponent {
   ngOnInit(): void {
     this.editSalleFormGroup = this.fb.group({
       capacite: [''],
-      numSalle: [''],
-      typeSalle: [''],
+      lib_salle: [''],
+      type_salle: [''],
+      ordinateur: [''],
+      projecteur: [''],
+      etat: [''],
     });
     this.setFormValues();
   }
@@ -34,18 +37,21 @@ export class EditSalleComponent {
     if (this.salle) {
       this.editSalleFormGroup.patchValue({
         capacite: this.salle.capacite,
-        numSalle: this.salle.numSalle,
-        typeSalle: this.salle.typeSalle,
+        lib_salle: this.salle.lib_salle,
+        type_salle: this.salle.type_salle,
+        ordinateur: this.salle.ordinateur,
+        projecteur: this.salle.projecteur,
+        etat: this.salle.etat,
       });
     }
   }
 
 
   handleUpdateSalle() {
-
+    console.log(this.editSalleFormGroup.value)
     if (this.editSalleFormGroup.valid) {
       this.salleService
-        .updateSalle(this.salle.id, this.editSalleFormGroup.value)
+        .updateSalle_(this.salle.id_salle, this.editSalleFormGroup.value)
         .subscribe((data) => {
           Swal.fire({
             position: 'top-end',

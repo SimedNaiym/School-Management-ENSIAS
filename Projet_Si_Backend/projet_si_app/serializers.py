@@ -61,5 +61,18 @@ class ElementSerializer(serializers.ModelSerializer):
                   'vhTP'
                   ]
 
+class SalleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Salle
+        fields = ['id_salle',
+                  'capacite',
+                  'lib_salle',
+                  'type_salle',
+                  'ordinateur',
+                  'projecteur',
+                  'etat'
+                  ]
+
+
 
              

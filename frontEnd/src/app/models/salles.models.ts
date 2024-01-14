@@ -1,8 +1,9 @@
-
-
 export interface Salle {
-    id:        number;
-    numSalle:  number;
-    typeSalle: string;
+    id_salle:number;
     capacite:number;
+    lib_salle: string;
+    type_salle:string;
+    ordinateur:number;
+    projecteur:number;
+    etat:string;
 }
