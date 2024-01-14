@@ -4,6 +4,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {FiliereService} from "../../../services/filiere.service";
 import {Filiere} from "../../../models/filieres.models";
+import { Departement } from 'src/app/models/departement.models';
+import { Prof } from 'src/app/models/prof.models';
+import { DepartmentService } from 'src/app/services/department.service';
+import { ProfServiceService } from 'src/app/services/prof-service.service';
 @Component({
   selector: 'app-edit-filiere',
   templateUrl: './edit-filiere.component.html',
@@ -12,30 +16,44 @@ import {Filiere} from "../../../models/filieres.models";
 export class EditFiliereComponent implements OnInit {
   editFiliereFormGroup!: FormGroup;
   filiere!: Filiere;
+  departements: Departement[] = [];
+  profs:Prof[]=[]
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private dpService: FiliereService
+    private dpService: FiliereService,
+    private departementService: DepartmentService,
+    private profService:ProfServiceService,
   ) {
     this.filiere = this.router.getCurrentNavigation()?.extras.state as Filiere;
   }
   ngOnInit(): void {
     this.editFiliereFormGroup = this.fb.group({
-      libelle: [''],
-      nombreSem: [''],
-      chefFiliere: [''],
-      departement: ['']
+      libelle_Fil: [''],
+      Abrv_Fil: [''],
+      id_Dep: [''],
+      id_CF: [''],
     });
+    this.departementService.searchDepartments_().subscribe(
+      (response)=>{
+        this.departements=response
+      }
+    )
+    this.profService.searchProfs_().subscribe(
+      (response)=>{
+        this.profs=response
+      }
+    )
     this.setFormValues();
   }
   setFormValues() {
     if (this.filiere) {
       this.editFiliereFormGroup.patchValue({
         libelle_Fil: this.filiere.libelle_Fil,
-        Abrv_Fil:this.filiere.Abrv_Fil
-        // chefFiliere: this.filiere.chef_filiere.id
-        // departement: this.filiere.departement.libelle_Dep
+        Abrv_Fil:this.filiere.Abrv_Fil,
+        chefFiliere: this.filiere.id_CF,
+        departement: this.filiere.id_Dep
       });
     }
   }
@@ -46,7 +64,7 @@ export class EditFiliereComponent implements OnInit {
         ...this.filiere,
         ...this.editFiliereFormGroup.value
       };
-      this.dpService.updateFiliere(updatedFiliere.filiere_id,updatedFiliere).subscribe((data) => {
+      this.dpService.updateFiliere_(updatedFiliere.filiere_id,updatedFiliere).subscribe((data) => {
           Swal.fire( 'Succès', 'Filiére modifié avec succès','success');
           this.router.navigateByUrl('/filieres');
         }

@@ -24,6 +24,7 @@ import { NonDisponibleComponent } from './components/gestion/non-disponible/non-
 import { ModuleComponent } from './components/gestion/module/module.component';
 import { ElementModuleComponent } from './components/gestion/element-module/element-module.component';
 import { AddNewModuleComponent } from './components/add/add-new-module/add-new-module.component';
+import { EditModuleComponent } from './components/edit/edit-module/edit-module.component';
 const routes: Routes = [
   { path :'' , component: HomeComponent},
   { path :'index' , component: IndexPageComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
     { path :'departements/add' , component: AddNewDepartementComponent},
     { path:'module',component:ModuleComponent},
     { path :'module/add' , component: AddNewModuleComponent},
+    { path :'module/edit' , component: EditModuleComponent},
     { path:'elementModule',component:ElementModuleComponent},
     { path :'classes' , component: GestionClasseComponent},
     { path :'classes/add' , component: AddNewClasseComponent},

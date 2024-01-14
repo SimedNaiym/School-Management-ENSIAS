@@ -37,7 +37,7 @@ export class ModuleComponent {
     })
   }
    handleEditeDepart(departEdit: Module) {
-    this.router.navigateByUrl('/departements/edit',{state :departEdit});
+    this.router.navigateByUrl('/module/edit',{state :departEdit});
   }
 
  handleChangeSize($event: Event) {

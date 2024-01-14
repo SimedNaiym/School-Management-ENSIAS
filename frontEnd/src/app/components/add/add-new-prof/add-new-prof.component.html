@@ -24,20 +24,20 @@
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="prenom"
+                  formControlName="prenom_Prof"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Nom <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" formControlName="nom" />
+                <input class="form-control" type="text" formControlName="nom_Prof" />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>CNE <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" formControlName="cin" />
+                <input class="form-control" type="text" formControlName="CIN_Prof" />
               </div>
             </div>
             <div class="col-12 col-sm-6">
@@ -46,20 +46,20 @@
                 <input
                   class="form-control"
                   type="email"
-                  formControlName="email"
+                  formControlName="email_prof"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-6">
               <div class="form-group local-forms">
                 <label>Téléphone <span class="login-danger">*</span></label>
-                <input class="form-control" type="text" formControlName="tel" />
+                <input class="form-control" type="text" formControlName="telephone_prof" />
               </div>
             </div>
             <div class="col-12 col-sm-2">
               <div class="form-group local-forms">
                 <label>département<span class="login-danger">*</span></label>
-                <select class="form-control" formControlName="departement">
+                <select class="form-control" formControlName="id_Dep">
                   <option *ngFor="let dep of departements" [value]="dep.id_Dep">{{ dep.libelle_Dep }}</option>
                 </select>
               </div>
@@ -67,7 +67,7 @@
             <div class="col-12 col-sm-2">
               <div class="form-group local-forms">
                 <label>Rôle<span class="login-danger">*</span></label>
-                <select class="form-control" formControlName="role">
+                <select class="form-control" formControlName="Role_Prof">
                   <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
                 </select>
               </div>
@@ -78,14 +78,14 @@
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="specialite"
+                  formControlName="specialite_Prof"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Categorie<span class="login-danger">*</span></label>
-                <select class="form-control" formControlName="categorie">
+                <select class="form-control" formControlName="id_cat">
                     <option value= 1>professeur</option>
                     <option value=2>asist prof</option>
                 </select>
@@ -99,7 +99,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  formControlName="login"
+                  formControlName="nom_utilisateur_Prof"
                 />
               </div>
             </div>
@@ -109,14 +109,14 @@
                 <input
                   type="password"
                   class="form-control"
-                  formControlName="password"
+                  formControlName="mdp_Prof"
                 />
               </div>
             </div>
             <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Etat de compte<span class="login-danger">*</span></label>
-                <select class="form-control" formControlName="etat">
+                <select class="form-control" formControlName="etat_compte_Prof">
                   <option value="active">Active</option>
                   <option value="suspendu">Suspendu</option>
                   <option value="arrete">Arrete</option>

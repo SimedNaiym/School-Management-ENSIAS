@@ -22,6 +22,10 @@ export class FiliereService {
   public deleteFiliere_(id: number): Observable<any>{
     return this.http.delete(this.url+"/"+id);
   }
+  public updateFiliere_(id: number,Filiere: Filiere):Observable<Filiere>{
+    console.log("Update f");
+   return this.http.put<Filiere>("http://127.0.0.1:8000/api/allFiliere/"+id,Filiere);
+ }
 // ---------
   public getAllFilieres(): Observable<Filiere[]> {
     return this.http.get<Filiere[]>(`${environment.backendHost}/filieres/all`);

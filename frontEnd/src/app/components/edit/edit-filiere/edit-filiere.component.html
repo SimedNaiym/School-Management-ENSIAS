@@ -18,51 +18,44 @@
               ></span>
               </h5>
             </div>
-            <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-6">
               <div class="form-group local-forms">
-                <label>Libellé <span class="login-danger">*</span></label>
+                <label>Filiere <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
+                  placeholder="libellé ...."
                   formControlName="libelle_Fil"
                 />
               </div>
             </div>
-            <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-6">
               <div class="form-group local-forms">
-                <label>Libellé <span class="login-danger">*</span></label>
+                <label>Abreviation <span class="login-danger">*</span></label>
                 <input
                   class="form-control"
                   type="text"
+                  placeholder="libellé ...."
                   formControlName="Abrv_Fil"
                 />
               </div>
             </div>
-            <!-- <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-6">
               <div class="form-group local-forms">
-                <label
-                >Chef du Filiére<span class="login-danger">*</span></label
-                >
-                <input
-                  class="form-control"
-                  type="text"
-                  formControlName="chefFiliere"
-                />
+                <label>département<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="id_Dep">
+                  <option *ngFor="let dep of departements" [value]="dep.id_Dep">{{ dep.libelle_Dep }}</option>
+                </select>
               </div>
-
-              <div class="col-12 col-sm-4">
-                <div class="form-group local-forms">
-                  <label
-                  >Département<span class="login-danger">*</span></label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    formControlName="departement"
-                  />
-                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group local-forms">
+                <label>Chef filiere<span class="login-danger">*</span></label>
+                <select class="form-control" formControlName="id_CF">
+                  <option *ngFor="let prof of profs" [value]="prof.ID_Prof">{{ prof.nom_Prof+" "+prof.prenom_Prof }}</option>
+                </select>
               </div>
-            </div> -->
+            </div>
             <div
               class="col-12 d-flex align-items-center justify-content-center"
             >

@@ -35,21 +35,23 @@ export class AddNewProfComponent {
     )
     console.log(this.categories)
     this.newProfFormGroup = this.fb.group({
-    prenom: this.fb.control(null, [Validators.required]),
-    nom: this.fb.control(null, [Validators.required]),
-    cin: this.fb.control(null, [Validators.required]),
-    tel: this.fb.control(null, [Validators.required]),
-    email: this.fb.control(null, [Validators.required, Validators.email]),
-    departement: this.fb.control(null, [Validators.required]),
-    specialite: this.fb.control(null, [Validators.required]),
-    categorie: this.fb.control(null, [Validators.required]),
-    login: this.fb.control(null, [Validators.required]),
-    password: this.fb.control(null, [Validators.required]),
-    etat: this.fb.control(null, [Validators.required]),
+      nom_Prof: this.fb.control(null, [Validators.required]),
+      prenom_Prof: this.fb.control(null, [Validators.required]),
+      CIN_Prof: this.fb.control(null, [Validators.required]),
+      email_prof: this.fb.control(null, [Validators.required, Validators.email]),
+      telephone_prof: this.fb.control(null, [Validators.required]),
+      specialite_Prof: this.fb.control(null, [Validators.required]),
+      nom_utilisateur_Prof: this.fb.control(null, [Validators.required]),
+      mdp_Prof: this.fb.control(null, [Validators.required]),
+      etat_compte_Prof: this.fb.control(null, [Validators.required]),
+      Role_Prof: this.fb.control(null, [Validators.required]),
+      id_Dep: this.fb.control(null, [Validators.required]),
+      id_cat: this.fb.control(null, [Validators.required]),
     });
   }
 
   handleAddProf() {
+    console.log(this.newProfFormGroup.value)
   if (this.newProfFormGroup.valid) {
     const newProf: Prof = this.newProfFormGroup.value;
     this.profService.saveProf_(newProf).subscribe({

@@ -21,6 +21,9 @@ export class DepartmentService {
   public deleteDepartment_(id: number): Observable<any> {
     return this.http.delete(`http://127.0.0.1:8000/api/allDepartement/${id}`);
   }
+  public updateDepartment_(id: number, department: Departement): Observable<Departement> {
+    return this.http.put<Departement>(`http://127.0.0.1:8000/api/allDepartement/${id}`, department);
+  }
 // ------------  
   public searchDepartments(keyword: string, page: number, size: number): Observable<PageDepartment> {
     return this.http.get<PageDepartment>(`${environment.backendHost}/departements/search?keyword=${keyword}&page=${page}&size=${size}`);

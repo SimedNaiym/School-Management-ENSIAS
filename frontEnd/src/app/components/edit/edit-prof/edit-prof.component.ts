@@ -66,7 +66,7 @@ export class EditProfComponent implements OnInit {
         ...this.editProfFormGroup.value
       };
 
-      this.profService.updateProf(updatedProf.ID_Prof,updatedProf).subscribe((data) => {
+      this.profService.updateProf_(updatedProf.ID_Prof,updatedProf).subscribe((data) => {
          Swal.fire('Succès', 'Professeur modifié avec succès', 'success');
         this.router.navigateByUrl('/profs');
       });

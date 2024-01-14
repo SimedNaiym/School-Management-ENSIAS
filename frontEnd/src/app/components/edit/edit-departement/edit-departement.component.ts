@@ -25,15 +25,16 @@ export class EditDepartementComponent implements OnInit {
 
   ngOnInit(): void {
     this.editDepartFormGroup = this.fb.group({
-      libelle: [''],
-      chefDepartement: ['']
+      libelle_Dep: [''],
+      Abrv_Dep: ['']
     });
     this.setFormValues();
   }
   setFormValues() {
     if (this.depart) {
       this.editDepartFormGroup.patchValue({
-        libelle: this.depart.libelle_Dep,
+        libelle_Dep: this.depart.libelle_Dep,
+        Abrv_Dep: this.depart.Abrv_Dep,
         // chefDepartement: this.depart.chefDepartement
       });
     }
@@ -47,7 +48,7 @@ export class EditDepartementComponent implements OnInit {
         ...this.depart,
         ...this.editDepartFormGroup.value
       };
-      this.dpService.updateDepartment(updatedDepart.id_Dep,updatedDepart).subscribe((data) => {
+      this.dpService.updateDepartment_(updatedDepart.id_Dep,updatedDepart).subscribe((data) => {
           Swal.fire( 'Succès', 'Département modifié avec succès','success');
           this.router.navigateByUrl('/departements');
         }

@@ -20,6 +20,9 @@ export class ProfServiceService {
   public deleteProf_(id: number): Observable<any>{
     return this.http.delete(this.url+"/"+id);
   }
+  public updateProf_(id: number,Prof: Prof):Observable<Prof>{
+    return this.http.put<Prof>("http://127.0.0.1:8000/api/allProfesseur/"+id,Prof);
+  }
 // ---------
    public getProfs(page: number, size: number): Observable<PageProf> {
     return this.http.get<PageProf>(environment.backendHost + "/enseignants?page=" + page + "&size=" + size);

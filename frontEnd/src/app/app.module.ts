@@ -38,6 +38,7 @@ import { NonDisponibleComponent } from './components/gestion/non-disponible/non-
 import { ModuleComponent } from './components/gestion/module/module.component';
 import { ElementModuleComponent } from './components/gestion/element-module/element-module.component';
 import { AddNewModuleComponent } from './components/add/add-new-module/add-new-module.component';
+import { EditModuleComponent } from './components/edit/edit-module/edit-module.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AddNewModuleComponent } from './components/add/add-new-module/add-new-m
     ModuleComponent,
     ElementModuleComponent,
     AddNewModuleComponent,
+    EditModuleComponent,
   ],
   imports: [
     BrowserModule,
