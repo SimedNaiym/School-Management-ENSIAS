@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {Filiere} from "../../../models/filieres.models";
 import {FiliereService} from "../../../services/filiere.service";
+import { ProfServiceService } from 'src/app/services/prof-service.service';
 
 @Component({
   selector: 'app-gestion-filiere',
@@ -14,6 +15,7 @@ import {FiliereService} from "../../../services/filiere.service";
 })
 export class GestionFiliereComponent implements OnInit{
   filieres: Filiere [] = [];
+  departements!:Departement[];
   errorMessage!: string;
   searchFormGroup!: FormGroup;
   page: number = 0;
@@ -22,9 +24,13 @@ export class GestionFiliereComponent implements OnInit{
   currentPage: number = 0;
   totalelements:number=0;
   displayedPages: number[] = [];
+  selectedOption!: number;
+
   constructor(
     private filiereService: FiliereService,
     private fb: FormBuilder,
+    private filiereS:FiliereService,
+    private depService:DepartmentService,
     private router: Router
   ) {}
 
@@ -38,6 +44,20 @@ export class GestionFiliereComponent implements OnInit{
         console.log(this.filieres)
       }
     );
+    this.depService.searchDepartments_().subscribe(
+      (response)=>{
+        this.departements=response
+      }
+    )
+  }
+  onOptionChange(dep:any) {
+    this.filiereS.getByDep(dep.value).subscribe(
+      (response)=>{
+        this.filieres=response
+        console.log(response)
+      }
+    )
+    console.log(dep.value)
   }
   handleEditeFiliere(filiereEdit: Filiere) {
     this.router.navigateByUrl('/filieres/edit',{state :filiereEdit});

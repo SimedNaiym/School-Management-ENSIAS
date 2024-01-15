@@ -1,13 +1,1 @@
-<ng-container *ngIf="prof; else page">
-  <app-profile></app-profile>
-</ng-container>
-
-<ng-template #page>
-  <app-page-header
-    [link]="'home'"
-    [prev]="'Accueil'"
-    [current]="'Admin'"
-  ></app-page-header>
-  <app-statistique></app-statistique>
-  <app-actions></app-actions>
-</ng-template>
+<app-statistique></app-statistique>

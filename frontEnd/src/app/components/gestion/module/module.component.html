@@ -1,8 +1,4 @@
-<app-page-header
-  [link]="'departements'"
-  [prev]="'Départements'"
-  [current]="'Home'"
-></app-page-header>
+
 <div class="student-group-form">
   <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchDepartments()">
     <!-- Search form -->
@@ -34,7 +30,7 @@
         <div class="page-header">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="page-title">Départements</h3>
+              <h3 class="page-title">Modules</h3>
             </div>
             <div class="col-auto text-end float-end ms-auto download-grp">
               <a routerLink="/module/add" class="btn btn-primary">
@@ -50,15 +46,6 @@
           >
             <thead class="student-thread">
               <tr>
-                <th>
-                  <div class="form-check check-tables">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value="something"
-                    />
-                  </div>
-                </th>
                 <th>ID</th>
                 <th>libellé</th>
                 <th>Responsable</th>
@@ -67,15 +54,6 @@
             </thead>
             <tbody>
               <tr *ngFor="let module of modules">
-                <td>
-                  <div class="form-check check-tables">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value="something"
-                    />
-                  </div>
-                </td>
                 <td>{{ module.id_module }}</td>
                 <td>{{ module.libelle_Mod }}</td>
                 <td>{{ module.id_Prof_CM }}</td>

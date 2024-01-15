@@ -58,13 +58,6 @@
                 <th>ID</th>
                 <th>libellé</th>
                 <th>Module</th>
-                <th>Volume horaire</th>
-                <th>Prof Cours</th>
-                <th>vh Cours</th>
-                <th>Prof TD</th>
-                <th>vh TD</th>
-                <th>Prof TP</th>
-                <th>vh TP</th>
                 <th scope="col" class="text-center">Actions</th>
               </tr>
             </thead>
@@ -81,13 +74,7 @@
                 </td>
                 <td>{{ element.id_element }}</td>
                 <td>{{ element.libelle }}</td>
-                <td>{{ element.module.id_Prof_CM}}</td>
-                <td>{{ element.profCours.nom_Prof+" "+element.profCours.prenom_Prof}}</td>
-                <td>{{ element.vhCours }}</td>
-                <td>{{ element.profTD.nom_Prof+" "+element.profTD.prenom_Prof}}</td>
-                <td>{{ element.vhTD }}</td>
-                <td>{{ element.profTP.nom_Prof+" "+element.profTP.prenom_Prof}}</td>
-                <td>{{ element.vhTP }}</td>
+                <td>{{ element.module}}</td>
                 <td class="text-center">
                   <a
                     class="btn btn-sm bg-success-light me-2"

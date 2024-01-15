@@ -8,6 +8,8 @@ import { Departement } from '../../../models/departement.models';
 import { DepartmentService } from '../../../services/department.service';
 import { ProfServiceService } from 'src/app/services/prof-service.service';
 import { Prof } from 'src/app/models/prof.models';
+import { Module } from 'src/app/models/modules.models';
+import { ModuleService } from 'src/app/services/module.service';
 @Component({
   selector: 'app-add-new-element',
   templateUrl: './add-new-element.component.html',
@@ -15,12 +17,13 @@ import { Prof } from 'src/app/models/prof.models';
 })
 export class AddNewElementComponent {
   newFiliereFormGroup!: FormGroup;
-  departements: Departement[] = [];
+  departements: Module[] = [];
+
   profs:Prof[]=[]
   constructor(
     private fb: FormBuilder,
     private filiereService: FiliereService,
-    private departementService: DepartmentService,
+    private departementService: ModuleService,
     private profService:ProfServiceService,
     private router: Router
   ) {}
@@ -29,36 +32,30 @@ export class AddNewElementComponent {
     this.newFiliereFormGroup = this.fb.group({
       libelle: [null, Validators.required],
       module: [null, Validators.required],
-      volumeHoraire: [null, Validators.required],
-      profCours: [null, Validators.required],
-      vhCours: [null, Validators.required],
-      profTD: [null, Validators.required],
-      vhTD: [null, Validators.required],
-      profTP: [null, Validators.required],
-      vhTP: [null, Validators.required],
     });
-    this.departementService.searchDepartments_().subscribe(
+    this.departementService.searchModules_().subscribe(
       (response)=>{
         this.departements=response
       }
     )
     this.profService.searchProfs_().subscribe(
       (response)=>{
+        
         this.profs=response
       }
     )
   }
 
-  getDepartements() {
-    this.departementService.getDepartements().subscribe(
-      (data: Departement[]) => {
-        this.departements = data;
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
+  // getDepartements() {
+  //   this.departementService.getDepartements().subscribe(
+  //     (data: Departement[]) => {
+  //       this.departements = data;
+  //     },
+  //     (error: any) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   handleAddFiliere() {
     if (this.newFiliereFormGroup.valid) {

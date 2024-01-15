@@ -1,8 +1,4 @@
-<app-page-header
-  [link]="'filieres'"
-  [prev]="'filières'"
-  [current]="'Ajouter une Filière'"
-></app-page-header>
+
 
 <div class="row">
   <div class="col-sm-12">
@@ -33,11 +29,11 @@
                 <div class="form-group local-forms">
                 <label>Module <span class="login-danger">*</span></label>
                     <select class="form-control" formControlName="module">
-                        <option *ngFor="let dep of departements" [value]="dep.id_Dep">{{ dep.libelle_Dep }}</option>
+                        <option *ngFor="let dep of departements" [value]="dep.id_module">{{ dep.libelle_Mod }}</option>
                     </select>
                 </div>
               </div>
-            <div class="col-12 col-sm-4">
+            <!-- <div class="col-12 col-sm-4">
               <div class="form-group local-forms">
                 <label>Volume horaire <span class="login-danger">*</span></label>
                 <input
@@ -47,64 +43,15 @@
                   formControlName="volumeHoraire"
                 />
               </div>
-            </div>
-            <div class="col-12 col-sm-6">
+            </div> -->
+            <!-- <div class="col-12 col-sm-">
               <div class="form-group local-forms">
                 <label>Professeur cours<span class="login-danger">*</span></label>
                 <select class="form-control" formControlName="profCours">
                   <option *ngFor="let prof of profs" [value]="prof.ID_Prof">{{ prof.nom_Prof+" "+prof.prenom_Prof }}</option>
                 </select>
               </div>
-            </div>
-            <div class="col-12 col-sm-6">
-                <div class="form-group local-forms">
-                  <label>Volume horaire cours <span class="login-danger">*</span></label>
-                  <input
-                    class="form-control"
-                    type="number"
-                    placeholder="libellé ...."
-                    formControlName="vhCours"
-                  />
-                </div>
-              </div>
-              <div class="col-12 col-sm-6">
-                <div class="form-group local-forms">
-                  <label>Professeur TD<span class="login-danger">*</span></label>
-                  <select class="form-control" formControlName="profTD">
-                    <option *ngFor="let prof of profs" [value]="prof.ID_Prof">{{ prof.nom_Prof+" "+prof.prenom_Prof }}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6">
-                  <div class="form-group local-forms">
-                    <label>Volume horaire TD <span class="login-danger">*</span></label>
-                    <input
-                      class="form-control"
-                      type="number"
-                      placeholder="libellé ...."
-                      formControlName="vhTD"
-                    />
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="form-group local-forms">
-                      <label>Professeur TP<span class="login-danger">*</span></label>
-                      <select class="form-control" formControlName="profTP">
-                        <option *ngFor="let prof of profs" [value]="prof.ID_Prof">{{ prof.nom_Prof+" "+prof.prenom_Prof }}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-6">
-                      <div class="form-group local-forms">
-                        <label>Volume horaire TP <span class="login-danger">*</span></label>
-                        <input
-                          class="form-control"
-                          type="number"
-                          placeholder="libellé ...."
-                          formControlName="vhTP"
-                        />
-                      </div>
-                    </div>
+            </div> -->
             <div class="col-12 d-flex align-items-center justify-content-center">
               <div class="student-submit">
                 <button type="submit" class="btn btn-primary">Confirmer</button>

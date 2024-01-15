@@ -6,6 +6,8 @@ from django.conf import settings
 urlpatterns=[
     path('allDepartement', views.departmentApi),
     path('allDepartement/<int:id>', views.departmentApi),
+    path('allProfesseur/filterByDeparetement/<int:id>', views.filterProf),    
+    path('allFiliere/filterByDeparetement/<int:id>', views.filterfil),
     path('allFiliere', views.FiliereApi),
     path('allFiliere/<int:id>', views.FiliereApi),
     path('allProfesseur', views.ProfesseurApi),

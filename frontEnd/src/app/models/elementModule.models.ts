@@ -6,11 +6,4 @@ export interface ElementDeModule {
     id_element:number;
     libelle:string;
     module:Module ;
-    volumeHoraire: number;
-    profCours:Prof;
-    vhCours:number;
-    profTD:Prof;
-    vhTD:number;
-    profTP:Prof;
-    vhTP:number;
 }

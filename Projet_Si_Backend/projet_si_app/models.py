@@ -86,9 +86,9 @@ class Element(models.Model):
     id_element=models.AutoField(primary_key=True)
     libelle=models.CharField(max_length=255)
     module=models.ForeignKey('Module', on_delete=models.CASCADE)
-    vhCours=models.BigIntegerField()
-    vhTD=models.BigIntegerField()
-    vhTP=models.BigIntegerField()
+    # vhCours=models.BigIntegerField()
+    # vhTD=models.BigIntegerField()
+    # vhTP=models.BigIntegerField()
 
     class Meta:
         db_table = 'Element'  # Nom de la table dans la base de données
@@ -106,9 +106,7 @@ class Salle(models.Model):
     # def __str__(self):
     #     return self.libelle_Salle
 
-class Seance(models.Model):
-    id_seance = models.AutoField(primary_key=True)
-    date = models.IntegerField()
-    heure = models.CharField(max_length=10)
+
+    
     
         

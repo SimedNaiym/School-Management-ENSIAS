@@ -51,10 +51,10 @@ class ElementSerializer(serializers.ModelSerializer):
         model = Element
         fields = ['id_element',
                   'libelle',
-                  'module',
-                   'vhCours',
-                    'vhTD',
-                    'vhTP'
+                  'module'
+                #    'vhCours',
+                #     'vhTD',
+                #     'vhTP'
                   ]
 
 class SalleSerializer(serializers.ModelSerializer):
@@ -68,13 +68,7 @@ class SalleSerializer(serializers.ModelSerializer):
                   'projecteur',
                   'etat'
                   ]
-class SeanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Seance
-        fields = ['id_seance',
-                  'date',
-                  'heure'
-        ]
+
 
 
              

@@ -23,6 +23,9 @@ export class ProfServiceService {
   public updateProf_(id: number,Prof: Prof):Observable<Prof>{
     return this.http.put<Prof>("http://127.0.0.1:8000/api/allProfesseur/"+id,Prof);
   }
+  public getByDep(id: number):Observable<Prof[]>{
+    return this.http.get<Prof[]>(this.url+"/filterByDeparetement/"+id)
+  }
 // ---------
    public getProfs(page: number, size: number): Observable<PageProf> {
     return this.http.get<PageProf>(environment.backendHost + "/enseignants?page=" + page + "&size=" + size);

@@ -65,6 +65,16 @@ def FiliereApi(request,id=0):
         return JsonResponse("Deleted Succeffully!!", safe=False)
 
 @csrf_exempt
+def filterProf(request,id=0):
+    professeur=Professeur.objects.filter(id_Dep=id)
+    professeur_serializer = ProfesseurSerializer(professeur, many=True)
+    return JsonResponse(professeur_serializer.data, safe=False)
+@csrf_exempt
+def filterfil(request,id=0):
+    filiere=Filiere.objects.filter(id_Dep=id)
+    filiere_serializer = FiliereSerializer(filiere, many=True)
+    return JsonResponse(filiere_serializer.data, safe=False)
+@csrf_exempt
 def ProfesseurApi(request,id=0):
     if request.method=='GET':
         professeur = Professeur.objects.all()

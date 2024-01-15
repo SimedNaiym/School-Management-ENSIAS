@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Departement } from 'src/app/models/departement.models';
 import { Prof } from 'src/app/models/prof.models';
+import { DepartmentService } from 'src/app/services/department.service';
 import { ProfServiceService } from 'src/app/services/prof-service.service';
 import Swal from 'sweetalert2';
 
@@ -12,25 +14,19 @@ import Swal from 'sweetalert2';
 })
 export class GestionProfComponent implements OnInit {
 
-
+  departements!:Departement[];
   profs!: Prof[];
-  errorMessage!: string;
   searchFormGroup!: FormGroup;
-  page: number = 0;
-  size: number = 6;
-  totalPages: number = 0;
-  currentPage: number = 0;
-  totalelements:number=0;
-  displayedPages: number[] = [];
-  option1:number=0;
-  option2:number=0;
-  option3:number=0;
-  option4:number=0;
+ 
+  selectedOption!: number;
 
+  
   constructor(
     private profService: ProfServiceService,
+    private depService:DepartmentService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cd:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -42,37 +38,27 @@ export class GestionProfComponent implements OnInit {
         this.profs=respone
       }
     )
+    this.depService.searchDepartments_().subscribe(
+      (response)=>{
+        this.departements=response
+      }
+    )
     
   } 
+  
+  onOptionChange(dep:any) {
+    this.profService.getByDep(dep.value).subscribe(
+      (response)=>{
+        this.profs=response
+        console.log(response)
+      }
+    )
+    console.log(dep.value)
 
+
+  }
   handleEditeProf(profedit: Prof) {
     this.router.navigateByUrl('/profs/edit',{state :profedit});
-  }
-    handleChangeSize($event: Event) {
-      this.size = parseInt((<HTMLInputElement>$event.target).value);
-      this.handleSearchCustomers();
-    }  
-
-  handleSearchCustomers() {
-    const kw = this.searchFormGroup?.value.keyword;
-    this.profService.searchProfs(kw, this.page, this.size).subscribe({
-      next: (data) => {
-        this.profs = data.content;
-        this.totalPages = data.totalPages;
-        this.currentPage = data.number;
-        this.totalelements=data.totalElements;
-        this.setDisplayedPages();
-        console.log(data);
-        this.option1=Math.ceil(this.totalelements/4)
-        this.option2= Math.ceil((this.totalelements/2))
-        this.option3=Math.ceil((this.totalelements/4)*3)
-        this.option4=this.totalelements;
-      },
-      error: (err) => {
-        this.errorMessage = err;
-        console.log(err);
-      }
-    });
   }
 
   handleDeleteProf(prof: Prof) {
@@ -94,35 +80,5 @@ export class GestionProfComponent implements OnInit {
 }
 
 
-  setDisplayedPages() {
-    this.displayedPages = [];
-    const startPage = Math.floor(this.currentPage / 3) * 3;
-    for (let i = startPage; i < startPage + 3 && i < this.totalPages; i++) {
-      this.displayedPages.push(i);
-    }
-  }
-
-  gotoPage(page: number) {
-    this.currentPage = page;
-    this.page = page; // Update the page parameter
-    this.handleSearchCustomers();
-  }
-
-  goToPreviousSet() {
-    const startPage = Math.floor(this.currentPage / 3) * 3;
-    if (startPage - 3 >= 0) {
-      this.currentPage = startPage - 3;
-      this.page = this.currentPage; // Update the page parameter
-      this.handleSearchCustomers();
-    }
-  }
-
-  goToNextSet() {
-    const startPage = Math.floor(this.currentPage / 3) * 3;
-    if (startPage + 3 < this.totalPages) {
-      this.currentPage = startPage + 3;
-      this.page = this.currentPage; // Update the page parameter
-      this.handleSearchCustomers();
-    }
-  }
+  
 }

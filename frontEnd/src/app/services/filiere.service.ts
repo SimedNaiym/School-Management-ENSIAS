@@ -26,6 +26,9 @@ export class FiliereService {
     console.log("Update f");
    return this.http.put<Filiere>("http://127.0.0.1:8000/api/allFiliere/"+id,Filiere);
  }
+ public getByDep(id: number):Observable<Filiere[]>{
+  return this.http.get<Filiere[]>(this.url+"/filterByDeparetement/"+id)
+}
 // ---------
   public getAllFilieres(): Observable<Filiere[]> {
     return this.http.get<Filiere[]>(`${environment.backendHost}/filieres/all`);
