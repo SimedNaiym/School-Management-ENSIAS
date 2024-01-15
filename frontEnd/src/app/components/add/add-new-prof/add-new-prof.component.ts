@@ -58,7 +58,7 @@ export class AddNewProfComponent {
       next: data => {
         Swal.fire('Succès', 'Professeur ajouté avec succès', 'success');
         this.router.navigateByUrl('/profs');
-        console.log(data)
+        console.log("DONS ")
       },
       error: err => {
         console.log(err);

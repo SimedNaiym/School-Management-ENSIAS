@@ -52,13 +52,9 @@ class ElementSerializer(serializers.ModelSerializer):
         fields = ['id_element',
                   'libelle',
                   'module',
-                  'volumeHoraire',
-                  'profCours',
-                  'vhCours',
-                  'profTD',
-                  'vhTD',
-                  'profTP',
-                  'vhTP'
+                   'vhCours',
+                    'vhTD',
+                    'vhTP'
                   ]
 
 class SalleSerializer(serializers.ModelSerializer):

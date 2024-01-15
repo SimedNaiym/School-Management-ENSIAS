@@ -147,7 +147,6 @@ def ModuleApi(request,id=0):
     
 @csrf_exempt
 def ElementApi(request,id=0):
-
     if request.method=='GET':
         element = Element.objects.all()
         element_serializer = ElementSerializer(element, many=True)

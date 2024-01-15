@@ -39,6 +39,7 @@ import { ModuleComponent } from './components/gestion/module/module.component';
 import { ElementModuleComponent } from './components/gestion/element-module/element-module.component';
 import { AddNewModuleComponent } from './components/add/add-new-module/add-new-module.component';
 import { EditModuleComponent } from './components/edit/edit-module/edit-module.component';
+import { AddNewElementComponent } from './components/add/add-new-element/add-new-element.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { EditModuleComponent } from './components/edit/edit-module/edit-module.c
     ElementModuleComponent,
     AddNewModuleComponent,
     EditModuleComponent,
+    AddNewElementComponent,
   ],
   imports: [
     BrowserModule,

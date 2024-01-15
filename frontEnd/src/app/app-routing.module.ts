@@ -25,6 +25,7 @@ import { ModuleComponent } from './components/gestion/module/module.component';
 import { ElementModuleComponent } from './components/gestion/element-module/element-module.component';
 import { AddNewModuleComponent } from './components/add/add-new-module/add-new-module.component';
 import { EditModuleComponent } from './components/edit/edit-module/edit-module.component';
+import { AddNewElementComponent } from './components/add/add-new-element/add-new-element.component';
 const routes: Routes = [
   { path :'' , component: HomeComponent},
   { path :'index' , component: IndexPageComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
     { path :'module/add' , component: AddNewModuleComponent},
     { path :'module/edit' , component: EditModuleComponent},
     { path:'elementModule',component:ElementModuleComponent},
+    { path:'elementModule/add',component:AddNewElementComponent},
     { path :'classes' , component: GestionClasseComponent},
     { path :'classes/add' , component: AddNewClasseComponent},
     { path :'salles' , component: GestionSallesComponent},

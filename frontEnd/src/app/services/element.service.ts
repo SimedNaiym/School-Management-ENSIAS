@@ -7,7 +7,7 @@ import { ElementDeModule } from '../models/elementModule.models';
   providedIn: 'root'
 })
 export class ElementService {
-  url="http://127.0.0.1:8000/api/allFiliere"
+  url="http://127.0.0.1:8000/api/allElement"
   constructor(private http:HttpClient) { }
   public searchProfs_():Observable<ElementDeModule[]>{
     return this.http.get<ElementDeModule[]>(this.url)

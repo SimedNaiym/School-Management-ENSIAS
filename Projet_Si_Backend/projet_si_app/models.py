@@ -82,26 +82,18 @@ class Module(models.Model):
          
 
 class Element(models.Model):
-    id_Ele = models.AutoField(primary_key=True)
-    libelle_Ele = models.CharField(max_length=255)
-    id_module = models.ForeignKey('Module', on_delete=models.CASCADE)
-   
-    # id_element=models.AutoField(primary_key=True)
-    # libelle=models.CharField(max_length=255)
-    # module=models.ForeignKey('Module', on_delete=models.CASCADE)
-    # volumeHoraire=models.BigIntegerField()
-    # profCours=models.ForeignKey('Professeur', on_delete=models.CASCADE)
-    # vhCours=models.BigIntegerField()
-    # profTD=models.ForeignKey('Professeur', on_delete=models.CASCADE)
-    # vhTD=models.BigIntegerField()
-    # profTP=models.ForeignKey('Professeur', on_delete=models.CASCADE)
-    # vhTP=models.BigIntegerField()
+
+    id_element=models.AutoField(primary_key=True)
+    libelle=models.CharField(max_length=255)
+    module=models.ForeignKey('Module', on_delete=models.CASCADE)
+    vhCours=models.BigIntegerField()
+    vhTD=models.BigIntegerField()
+    vhTP=models.BigIntegerField()
 
     class Meta:
         db_table = 'Element'  # Nom de la table dans la base de données
 
-    # def __str__(self):
-    #     return self.libelle_Ele
+   
 class Salle(models.Model):
     id_salle = models.AutoField(primary_key=True)
     capacite = models.IntegerField()
