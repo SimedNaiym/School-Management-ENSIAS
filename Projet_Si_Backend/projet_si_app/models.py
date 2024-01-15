@@ -105,4 +105,10 @@ class Salle(models.Model):
 
     # def __str__(self):
     #     return self.libelle_Salle
+
+class Seance(models.Model):
+    id_seance = models.AutoField(primary_key=True)
+    date = models.IntegerField()
+    heure = models.CharField(max_length=10)
+    
         

@@ -68,7 +68,13 @@ class SalleSerializer(serializers.ModelSerializer):
                   'projecteur',
                   'etat'
                   ]
-
+class SeanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Seance
+        fields = ['id_seance',
+                  'date',
+                  'heure'
+        ]
 
 
              

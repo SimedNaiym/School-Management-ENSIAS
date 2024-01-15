@@ -21,11 +21,11 @@ export class SidebarComponent implements OnInit{
     title: "Emploi du temps",
     icon: "fas fa-clipboard-list"
   },
-  {
-    link: "/classes",
-    title: "Classes",
-    icon: "fas fa-graduation-cap"
-  },
+  // {
+  //   link: "/classes",
+  //   title: "Classes",
+  //   icon: "fas fa-graduation-cap"
+  // },
   {
     link: "/profs",
     title: "Professeurs",
